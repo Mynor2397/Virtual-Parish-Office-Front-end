@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// hue. Available color palettes: https://material.io/design/color/
+$virtual-parish-office-primary: mat-palette($mat-indigo);
+$virtual-parish-office-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$virtual-parish-office-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$virtual-parish-office-theme: mat-light-theme($virtual-parish-office-primary, $virtual-parish-office-accent, $virtual-parish-office-warn);
+
+
+@include angular-material-theme($virtual-parish-office-theme);
+
+/* You can add global styles to this file, and also import other style files */
+@import "~ed-grid/ed-grid";
+

@@ -1,0 +1,110 @@
+<header class="ed-header bg-gray-200">
+    <div class="ed-grid lg-grid-5">
+
+        <div class="flex">
+            <div class="py-4">
+                <i class="fas fa-church text-blue-700 pl-6 text-5xl"></i>
+            </div>
+
+
+            <ul class="menu s-main-distribute lg-to-right s-mb-0 s-pl-0 s-py-1 py-4 lg:hidden ml-auto" *ngIf="loged">
+
+                <li class="lg-mr-3 mr-20 pr-4 ">
+                    <div class="flex float-right leading-normal tracking-normal bg-gray-200 absolute rounded-md">
+				
+                        <div class="text-sm text-gray-800 ">
+                            <li class="lg-mr-3 py-3 ">
+                                <a class="sm:text-base lg:text-lg text-blue-700 font-bold s-column s-cross-center no-underline cursor-pointer"
+                                (click)="changeView()">
+                                    <span class="fas fas fa-cogs"> Ajustes<div></div></span>
+                                </a>
+                            </li>
+    
+                            <div [className]="active ? 'block':'hidden'" class="shadow-md mt-2 relative mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible  pb-3">
+                                <ul class="items-end">
+                                    <li><hr class="border-t mx-2 border-gray-400 vertical-space"></li>
+                                    <li><a class="px-4 py-2 block text-blue-700 hover:bg-gray-400 font-bold no-underline hover:no-underline cursor-pointer"> Ayuda</a></li>
+                                    <li><hr class="border-t mx-2 border-gray-400 vertical-space"></li>
+                                    <li><a class="px-4 py-2 block text-orange-700 hover:bg-gray-400 font-bold no-underline hover:no-underline rounded-b-md cursor-pointer" (click)="Logout()"> Salir</a></li>
+                                </ul>
+                            </div>
+    
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+
+        </div>
+
+        <nav class="nav lg-cols-4 s-cross-center ed-grid full" *ngIf="loged">
+            <!--  Menú de navegación    -->
+            <ul class="menu s-main-distribute lg-to-right s-mb-0 s-pl-0 s-py-1">
+
+
+                <li class="lg-mr-3 py-3">
+                    <a class="sm:text-base lg:text-lg text-blue-700 font-bold s-column s-cross-center no-underline"
+                        routerLink="/">
+                        <!--  El ícono sólo se mostrará en la versión móvil  -->
+                        <span class="fas fa-book-reader"> Nueva</span>
+                    </a>
+                </li>
+
+                <li class="lg-mr-3 py-3">
+                    <a class="sm:text-base lg:text-lg text-blue-700 font-bold s-column s-cross-center no-underline"
+                        routerLink="/partidas">
+                        <!-- <span class="">Imprimir</span> -->
+                        <span class="fas fa-print cu"> Imprimir</span>
+                    </a>
+                </li>
+
+                <li class="lg-mr-3 py-3">
+                    <a class="sm:text-base lg:text-lg text-blue-700 font-bold s-column s-cross-center no-underline"
+                        routerLink="/entidades">
+                        <!-- <span class="">Imprimir</span> -->
+                        <span class="fas fa-users-cog"> Personas</span>
+                    </a>
+                </li>
+
+                <li class="lg-mr-3 py-3">
+                    <a class="sm:text-base lg:text-lg text-blue-700 font-bold s-column s-cross-center no-underline "
+                        routerLink="/recursos">
+                        <!-- <span class="">Imprimir</span> -->
+                        <span class="fas fa-toolbox"> Recursos</span>
+                    </a>
+                </li>
+
+                <div class="lg-mr-3 mr-20 pr-4 hidden-icon">
+                    <div class="flex float-right leading-normal tracking-normal bg-gray-200 absolute rounded-md">
+				
+                        <div class="text-sm text-gray-800 ">
+                            <li class="lg-mr-3 py-3 ">
+                                <a class="sm:text-base lg:text-lg text-blue-700 font-bold s-column s-cross-center no-underline cursor-pointer"
+                                (click)="changeView()">
+                                    <span class="fas fas fa-cogs"> Ajustes<div></div></span>
+                                </a>
+                            </li>
+    
+                            <div [className]="active ? 'block':'hidden'" class="shadow-md mt-2 relative mt-12 top-0 right-0 min-w-full overflow-auto z-30 invisible  pb-3">
+                                <ul class="items-end">
+                                    <li><hr class="border-t mx-2 border-gray-400 vertical-space"></li>
+                                    <li><a class="px-4 py-2 block text-blue-700 hover:bg-gray-400 font-bold no-underline hover:no-underline cursor-pointer"> Ayuda</a></li>
+                                    <li><hr class="border-t mx-2 border-gray-400 vertical-space"></li>                                    
+                                    <li><a class="px-4 py-2 block text-orange-700 hover:bg-gray-400 font-bold no-underline hover:no-underline rounded-b-md cursor-pointer" (click)="Logout()"> Salir</a></li>
+                                </ul>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+
+            </ul>
+
+
+        </nav>
+
+
+
+    </div>
+</header>

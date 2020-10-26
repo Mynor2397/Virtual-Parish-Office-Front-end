@@ -1,0 +1,80 @@
+<div mat-dialog-title class="block text-gray-700 text-sm font-bold mb-2 text-center pb-5"> Datos {{title}}</div>
+
+<div class="ed-container">
+    <form class="ed-item ed-container inputsize">
+        <mat-dialog-content [formGroup]="form">
+            <div class="ed-item ed-container">
+
+                <div class="ed-item s-100 m-50 l-50">
+                    <span *ngIf="submitted && f.firstname.errors"
+                    class="text-red-700 text-xs animated fadeIn">Ingrese este campo</span>
+                    <mat-form-field  appearance="outline" class="inputheight">
+                        <mat-label>Primer nombre</mat-label>
+                        <input matInput formControlName="firstname">
+                    </mat-form-field>
+                </div>
+
+                <div class="ed-item s-100 m-50 l-50">
+                    <mat-form-field appearance="outline" class="inputheight">
+                        <mat-label>Segundo nombre</mat-label>
+                        <input matInput formControlName="secondname">
+                    </mat-form-field>
+                </div>
+
+
+                <div class="ed-item s-100 m-50 l-50">
+                    <span *ngIf="submitted && f.lastname.errors"
+                    class="text-red-700 text-xs animated fadeIn">Ingrese este campo</span>
+                    <mat-form-field appearance="outline" class="inputheight">
+                        <mat-label>Primer apellido</mat-label>
+                        <input matInput formControlName="lastname">
+                    </mat-form-field>
+                </div>
+
+                <div class="ed-item s-100 m-50 l-50">
+                    <mat-form-field appearance="outline" class="inputheight">
+                        <mat-label>Segundo apellido</mat-label>
+                        <input matInput formControlName="secondlastname">
+                    </mat-form-field>
+                </div>
+
+                <div class="ed-item s-50 l-25 pt-4 pb-4" *ngIf="component == 'MNG'">
+                    <div class="mt-1">
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio h-6 w-6" formControlName="sexo" value="M">
+                            <span class="ml-3 text-base text-gray-700">Hom.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="ed-item s-50 l-25 pt-4 pb-4" *ngIf="component == 'MNG'">
+                    <div class="mt-1">
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio h-6 w-6" formControlName="sexo" value="F">
+                            <span class="ml-3 text-base text-gray-700">Muj.</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+        </mat-dialog-content>
+
+        <div class="ed-item ed-container">
+
+            <div class="ed-item s-50">
+                <div class="py-1 ">
+                    <button class=" mycustom-buttom-primary hover:bg-green-700 rounded-lg tamano"
+                        (click)="save()">GUARDAR</button>
+                </div>
+            </div>
+            <div class="ed-item s-50">
+                <div class="py-1 ">
+                    <button class="mycustom-button-warning hover:bg-red-700 rounded-lg tamano"
+                        (click)="close()">CANCELAR</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

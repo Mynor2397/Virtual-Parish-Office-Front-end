@@ -1,0 +1,141 @@
+<app-navbar></app-navbar>
+<div class="ed-grid pt-20">
+    <div class="ed-item">
+
+        <div class="">
+            <!-- <div>
+                <h2 class=" px-3 text-2xl font-sans leading-tight">Users</h2>
+            </div> -->
+            <div class="-mx-4 my-2 px-6 flex sm:flex-row flex-col">
+                <div class="flex flex-row sm:mb-0">
+                    <div class="relative">
+                        <select [ngModel]="limit" (ngModelChange)="MostrarID($event)"
+                            class="appearance-none h-full rounded-l border block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                            <option>5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+                            <option>100</option>
+                            <option>1000</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="block relative">
+                    <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
+                        <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+                            <path
+                                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
+                            </path>
+                        </svg>
+
+                    </span>
+                    <input placeholder="Search"
+                        class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                        [ngModel]="search" (ngModelChange)="updategrid($event)" />
+                </div>
+                <div class="block relative" *ngIf="prepartida.length == 0">
+                    <div class="float-right">
+
+                        <button
+                            class="appearance-none rounded-r-md border bg-green-600 border-gray-400 border-b block pl-8 pr-6 py-2 text-sm text-gray-100 hover:bg-green-400  outline-none"
+                            (click)="openDialog()">
+                            Notificar
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="-mx-4 py-2 px-6 overflow-x-auto">
+                <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                    <table class="min-w-full leading-normal">
+                        <thead>
+                            <tr>
+                                <th
+                                    class=" px-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-sans text-gray-600 uppercase tracking-wider tamano">
+                                    NO.
+                                </th>
+                                <th
+                                    class=" px-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-sans text-gray-600 uppercase tracking-wider tamano">
+                                    Nombres
+                                </th>
+                                <th
+                                    class="  border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-sans text-gray-600 uppercase tracking-wider tamano">
+                                    Apellidos
+                                </th>
+                                <th
+                                    class="  border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-sans text-gray-600 uppercase tracking-wider tamano">
+                                    Papá
+                                </th>
+                                <th
+                                    class="  border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-sans text-gray-600 uppercase tracking-wider tamano-sm">
+                                    Mamá
+                                </th>
+                                <th
+                                    class=" px-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-sans text-gray-600 uppercase tracking-wider tamano-sm">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tbody *ngFor="let row of prepartida">
+                            <tr>
+                                <td class="px-3  border-b border-gray-200 bg-white text-sm tamano">
+                                    <p class="justiitem text-gray-900 text-center whitespace-no-wrap">
+                                        {{row.position}}
+                                    </p>
+
+                                </td>
+
+                                <td class="px-3  border-b border-gray-200 bg-white text-sm tamano">
+                                    <p class="justiitem text-gray-900 whitespace-no-wrap">
+                                        {{row.firstname}} {{row.secondname}}
+                                    </p>
+
+                                </td>
+
+                                <td class="  border-b border-gray-200 bg-white text-sm tamano">
+                                    <p class="justiitem text-gray-900 whitespace-no-wrap">
+                                        {{row.lastname}} {{row.secondlastname}}
+                                    </p>
+
+                                </td>
+                                <td class="  border-b border-gray-200 bg-white text-sm tamano">
+                                    <p class="justiitem text-gray-900 whitespace-no-wrap">
+                                        {{row.father.firstname_father}} {{row.father.secondname_father}}
+                                    </p>
+                                </td>
+
+                                <td class="  border-b border-gray-200 bg-white text-sm tamano-sm">
+                                    <p class="justiitem text-gray-900 whitespace-no-wrap">
+                                        {{row.mother.firstname_mother}} {{row.mother.secondname_mother}}
+                                    </p>
+                                </td>
+
+                                <td class="border-b border-gray-200 bg-white text-sm tamano-sm justify-center ">
+                                    <div class="flex items-center px-4">
+                                        <button
+                                            class="flex-1 text-xs mycustom-buttom-primary hover:bg-green-700 rounded-lg actions-width"
+                                            (click)="createPDF(row.id_baptism)">Imprimir</button>
+                                        <button
+                                            class="flex-1 text-xs mycustom-button-warning  hover:bg-red-700 rounded-lg actions-width"
+                                            (click)="deletePartida(row.id_baptism)"
+                                            *ngIf="user.rol == 'admin'">Eliminar</button>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

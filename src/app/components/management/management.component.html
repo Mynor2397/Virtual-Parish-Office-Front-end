@@ -1,0 +1,244 @@
+<app-navbar></app-navbar>
+<div class="ed-container w-full mt-16 mb-1 ms:pt-4 md:pt-6 lg:pt-8 md:mt-10">
+    <div class="ed-item ed-container h-auto justify-center">
+
+        <div class="ed-item s-100 m-50 l-30  pt-5 mb-4">
+
+            <div class="flex flex-row items-center bg-gray-100 shadow-lg rounded p-3 text-gray-700">
+
+                <div class="flex-shrink pr-4">
+                    <div (click)="savebook()" class="cursor">
+                        <div class="rounded p-3 bg-yellow-700">
+                            <i class="fas fa-plus-square fa-2x fa-fw fa-inverse"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-700"> Libros</h5>
+                    <h3 class="font-bold text-4xl text-gray-700">
+                        {{countBook}}
+                        <span class="text-yellow-900">
+                            <i class="fas fa-bible"></i>
+                        </span>
+                    </h3>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="ed-item s-100 m-50 l-30  pt-5 mb-4">
+
+            <div class="flex flex-row items-center bg-gray-100 shadow-lg rounded p-3 text-gray-700">
+
+                <div class="flex-shrink pr-4">
+                    <div (click)="savepriest()" class="cursor">
+                        <div class="rounded p-3 bg-blue-700">
+                            <i class="fas fa-plus-square fa-2x fa-fw fa-inverse"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-700"> Sacerdotes</h5>
+                    <h3 class="font-bold text-4xl text-gray-700">
+                        {{countPriest}}
+                        <span class="text-blue-700">
+                            <i class="fas fa-address-book"></i>
+                        </span>
+                    </h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="ed-item s-100 m-50 l-30  pt-5 mb-4">
+
+            <div class="flex flex-row items-center bg-gray-100 shadow-lg rounded p-3 text-gray-700">
+
+                <div class="flex-shrink pr-4">
+                    <div (click)="saveplace()" class="cursor">
+                        <div class="rounded p-3 bg-yellow-500">
+                            <i class="fas fa-plus-square fa-2x fa-fw fa-inverse"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-700"> Lugares</h5>
+                    <h3 class="font-bold text-4xl text-gray-700">
+                        {{countPlace}}
+                        <span class="text-yellow-700">
+                            <i class="fas fa-place-of-worship"></i>
+                        </span>
+                    </h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="ed-item s-100 m-50 l-30  pt-5 mb-4" *ngIf="user.rol == 'admin'">
+
+            <div class="flex flex-row items-center bg-gray-100 shadow-lg rounded p-3 text-gray-700">
+
+                <div class="flex-shrink pr-4">
+                    <div (click)="saveUser()" class="cursor">
+                        <div class="rounded p-3 bg-green-500">
+                            <i class="fas fa-plus-square fa-2x fa-fw fa-inverse"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-right md:text-center">
+                    <h5 class="font-bold uppercase text-gray-700"> Usuarios</h5>
+                    <h3 class="font-bold text-4xl text-gray-700">
+                        
+                        <span class="text-green-700">
+                            <i class="fas fa-users"></i>
+                        </span>
+                    </h3>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- fin grid de elementos-->
+    <hr *ngIf="user.rol == 'admin'" class="border-b-2 border-gray-600 my-8 mx-4 w-full mb-4">
+    <!-- Grid de elementos-->
+    <div class="ed-item ed-container h-auto justify-center w-full py-2" *ngIf="user.rol == 'admin'">
+
+        <div class="ed-item s-100 m-50 l-50 mt-4">
+            <div class="bg-gray-100 border border-gray-800 rounded shadow">
+                <div class="border-b border-gray-800 align-middle">
+                    <h5 class="font-bold uppercase text-gray-600  text-center">Usuarios</h5>
+                </div>
+                <div class="p-5">
+                    <table class="w-full p-5 text-gray-700">
+                        <thead>
+                            <tr class="bg-gray-300">
+                                <th class="text-left text-gray-600 border border-gray-600 pl-2">Nombre</th>
+                                <th class="text-left text-gray-600 border border-gray-600 pl-2">Rol</th>
+                                <!-- <th class="text-center text-gray-600 border border-gray-600 pl-2">Camb. Rol</th>
+                                <th class="text-center text-gray-600 border border-gray-600 pl-2">Estado</th> -->
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let row of usuario" class="align-middle">
+                            <tr class="hover:bg-gray-300">
+                                <td class="border border-gray-600 pl-2">{{row.username}}</td>
+                                <td class="border border-gray-600 pl-2">{{row.rol}}</td>
+                                <!-- <td class="align-middle w-auto border border-gray-600 px-1">
+                                    <div class="flex items-center">
+                                        <button
+                                            class="flex-1 w-auto  text-xs mycustom-button hover:bg-blue-200 rounded-lg h-8 mr-1"><i class="fas fa-user-edit text-2xl"></i></button>
+                                        <button
+                                            class="flex-1 w-auto text-xs mycustom-button-warning hover:bg-red-700 rounded-lg h-8 ml-1">Inactivar</button>
+                                    </div>
+                                </td> -->
+
+                                <!-- <td class="align-middle w-auto border border-gray-600 px-1"> -->
+                                    <!-- <div class="flex items-center"> -->
+                                        <!-- <button
+                                            class="flex-1 w-auto text-xs mycustom-button-warning hover:bg-red-700 rounded-lg h-8 ml-1">Inactivar</button> -->
+                                            <!-- <mat-slide-toggle class="mat-warn" *ngIf="user.rol != row.rol"></mat-slide-toggle> -->
+                                    <!-- </div> -->
+                                <!-- </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ed-item s-100 m-50 l-50 mt-4">
+            <div class="bg-gray-100 border border-gray-800 rounded shadow">
+                <div class="border-b border-gray-800 align-middle">
+                    <h5 class="font-bold uppercase text-gray-600  text-center">Auditoría</h5>
+                </div>
+                <div class="p-5">
+                    <table class="w-full p-5 text-gray-700">
+                        <thead>
+                            <tr class="bg-gray-300">
+                                <th class="text-left text-gray-600 border border-gray-600 pl-2">Fecha</th>
+                                <th class="text-left text-gray-600 border border-gray-600 pl-2">Usuario</th>
+                                <th class="text-left text-gray-600 border border-gray-600 pl-2">Partida</th>
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let row of audits" class="align-middle">
+                            <tr class="hover:bg-gray-300">
+                                <td class="border border-gray-600 pl-2">{{row.date_emited}}</td>
+                                <td class="border border-gray-600 pl-2">{{row.user_name}}</td>
+                                <td class="border border-gray-600 pl-2">{{row.id_baptism}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+
+    <hr class="border-b-2 border-gray-600 my-8 mx-4 w-full mb-4">
+    <!-- Grid de elementos-->
+    <div class="ed-item ed-container h-auto justify-center w-full py-2 mb-16">
+
+        <div class="ed-item s-100 m-50 l-50 mt-4">
+            <div class="bg-gray-100 border border-gray-800 rounded shadow">
+                <div class="border-b border-gray-800">
+                    <h5 class="font-bold uppercase text-gray-600 text-center">SACERDOTES</h5>
+                </div>
+                <div class="p-5">
+                    <table class="w-full p-5 text-gray-700 text-left">
+                        <thead>
+                            <tr>
+                                <th class="text-gray-600 text-left">Nombres</th>
+                                <th class=" text-gray-600 text-left">Apellidos</th>
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let row of priestList">
+                            <tr>
+                                <td>{{row.firstname}} {{row.secondname}}</td>
+                                <td>{{row.secondname}} {{row.secondlastname}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="ed-item s-100 m-50 l-50 mt-4">
+            <div class="bg-gray-100 border border-gray-800 rounded shadow">
+                <div class="border-b border-gray-800">
+                    <h5 class="font-bold uppercase text-gray-600  text-center">LUGARES</h5>
+                </div>
+                <div class="p-5">
+                    <table class="w-full p-5 text-gray-700">
+                        <thead>
+                            <tr>
+                                <th class="px-3 border-b-2 border-gray-200 text-left text-gray-600">Lugar</th>
+                                <th class="px-3 border-b-2 border-gray-200 text-left text-gray-600">Descripcion</th>
+                            </tr>
+                        </thead>
+
+                        <tbody *ngFor="let row of placeList">
+                            <tr>
+                                <td class="px-3 border-b-2 border-gray-300">{{row.name}}</td>
+                                <td class="px-3 border-b-2 border-gray-300">{{row.description}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

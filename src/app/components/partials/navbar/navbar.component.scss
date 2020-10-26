@@ -1,0 +1,51 @@
+@import "~ed-grid/ed-grid";
+
+// Posicionamiento del header
+.ed-header {
+    position : fixed;
+    top      : 0;
+    width    : 100%;
+    z-index  : 100;
+  
+    .logo { height : 2rem }
+  
+    // Posicionamiento del nav
+    // Utilizamos el mixin to() de EDgrid para que sólo se aplique en móvil
+    .nav {
+        @include to(lg) { 
+          position : fixed;
+          left     : 0;
+          bottom   : 0;
+          --bg-opacity: 1;
+          background-color: #edf2f7;
+          background-color: rgba(247, 250, 252, var(--bg-opacity));
+        }
+    }
+  
+    .menu { list-style : none }
+   
+     // Colores de links del menú
+    .link {
+      color :rgb(24, 97, 255);
+      &.active { color : rgb(24, 97, 255)}
+      @include from(lg) { color : rgb(24, 97, 255) }
+    }
+  
+     // Estilos para los íconos
+    .icon {
+      --size : 1.5rem;
+      width  : var(--size);
+      height : var(--size);
+      fill   : currentColor;
+    }
+  
+    .hidden-icon{
+      @include to(lg){
+        display: none;
+      }
+    }
+}
+
+.vertical-space{
+  --vertical-content-space: 0rem !important;
+}

@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+
+<div class="flex content-center flex-wrap sm:container mt-20 mx-auto overflow-hidden">
+  <div class="w-1/2 pl-20">
+    <mat-card-content>
+      <form class="my-form">
+        <div class="inputsize">
+
+          <mat-form-field appearance="outline" class="inputheight">
+            <mat-label>Primer nombre</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight">
+            <mat-label>Segundo nombre</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight">
+            <mat-label>Primer apellido</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight">
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput placeholder="Email" name="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight ">
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Password" name="password">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+      </form>
+    </mat-card-content>
+  </div>
+
+  <!-- -- -->
+
+  <div class="w-1/2 pl-5">
+    <mat-card-content>
+      <form class="my-form">
+        <div class="inputsize">
+
+          <mat-form-field appearance="outline" class="inputheight1">
+            <mat-label>Primer nombre</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight1">
+            <mat-label>Segundo nombre</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight1">
+            <mat-label>Primer apellido</mat-label>
+            <input matInput>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="inputheight1">
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput placeholder="Email" name="email">
+          </mat-form-field>
+
+
+        </div>
+      </form>
+    </mat-card-content>
+  </div>
+</div>

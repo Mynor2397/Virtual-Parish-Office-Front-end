@@ -1,0 +1,266 @@
+<app-navbar></app-navbar>
+
+<div class="ed-container mt-16 px-4  mb-16 pt-8 ">
+
+  <form class="ed-item ed-container inputsize bg-white shadow-md rounded pt-5" [formGroup]="partida" (ngSubmit)="insert()">
+    <div class="ed-item ed-container pb-4 l-50 md:pb-8 h-auto">
+
+      <div class="ed-item s-50 l-50">
+        <mat-form-field appearance="outline" class="inputheight">
+          <mat-label>Primer nombre</mat-label>
+          <input matInput formControlName="firstname">
+        </mat-form-field>
+      </div>
+
+      <div class="ed-item s-50  l-50">
+        <mat-form-field appearance="outline" class="inputheight">
+          <mat-label>Segundo nombre</mat-label>
+          <input matInput formControlName="secondname">
+        </mat-form-field>
+      </div>
+
+      <div class="ed-item s-50 l-50">
+        <mat-form-field appearance="outline" class="inputheight">
+          <mat-label>Primer apellido</mat-label>
+          <input matInput formControlName="lastname">
+        </mat-form-field>
+      </div>
+
+      <div class="ed-item s-50 l-50">
+        <mat-form-field appearance="outline" class="inputheight">
+          <mat-label>Segundo apellido</mat-label>
+          <input matInput placeholder="Segundo apellido" formControlName="secondlastname">
+        </mat-form-field>
+      </div>
+
+      <div class="ed-item s-50 l-50">
+        <mat-form-field appearance="outline" class="inputheight ">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" formControlName="borndate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="ed-item s-50 l-50">
+        <mat-form-field appearance="outline" class="inputheight ">
+          <mat-label>Fecha de bautismo</mat-label>
+          <input matInput [matDatepicker]="picker1" placeholder="Fecha de bautismo" formControlName="baptismdate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="ed-item s-50 l-50">
+        <div class="relative">
+          <mat-form-field appearance="outline" class="example-full-width inputheight">
+            <mat-label>Lugar</mat-label>
+            <mat-select formControlName="place">
+              <mat-option>Ninguno</mat-option>
+              <mat-option *ngFor="let option of placeList" [value]="option.id">
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="ed-item s-50 l-50">
+        <div class="relative">
+          <mat-form-field appearance="outline" class="example-full-width inputheight">
+            <mat-label>Sacerdote</mat-label>
+            <mat-select formControlName="priest">
+              <mat-option>Ninguno</mat-option>
+              <mat-option *ngFor="let option of priestList" [value]="option.id">
+                {{option.firstname}} {{option.secondname}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+      <div class="ed-item s-25 l-25 pt-4">
+        <div class="mt-1">
+          <label class="inline-flex items-center">
+            <input type="radio" class="form-radio h-6 w-6" formControlName="sex" value="M">
+            <span class="ml-3 text-base text-gray-700">Hom.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ed-item s-25 l-25 pt-4">
+        <div class="mt-1">
+          <label class="inline-flex items-center">
+            <input type="radio" class="form-radio h-6 w-6" formControlName="sex" value="F">
+            <span class="ml-3 text-base text-gray-700">Muj.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ed-item s-25 l-25 pt-2">
+        <div class="relative">
+          <mat-form-field appearance="outline" class="example-full-width inputheight">
+            <mat-label>Libro</mat-label>
+            <mat-select formControlName="book" (selectionChange)="getFolios($event.value)">
+              <mat-option *ngFor="let option of bookList" [value]="option.id_book">
+                {{option.number_book}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="ed-item s-25 l-25 pt-2">
+        <div class="relative">
+          <mat-form-field appearance="outline" class="example-full-width inputheight">
+            <mat-label>Folio</mat-label>
+            <mat-select formControlName="folio">
+              <mat-option *ngFor="let option of folioList" [value]="option.id_folio">
+                {{option.number_folio}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right form -->
+    <div class="ed-item ed-container l-50 px-2 pb-4">
+
+      <div class="ed-item ed-container">
+        <div class="ed-item s-50 l-75">
+          <div class="relative">
+            <mat-form-field appearance="outline" class="example-full-width inputheight">
+              <mat-label>Papá</mat-label>
+              <mat-select formControlName="father">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let option of fatherList" [value]="option.id">
+                  {{option.firstname}} {{option.secondname}} {{option.lastname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="ed-item s-50 l-25">
+          <!-- <a class="btn btn-blue h-12">Agregar Padre</a> -->
+          <div class=" mt-1 mb-4 py-3 mycustom-button  hover:bg-blue-700 rounded-lg tamano  text-center">
+            <a class="justi-center cursor-pointer no-underline" (click)="openDialog('del papá', 'M', 'FA')">AGREGAR</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ed-item ed-container">
+        <div class="ed-item s-50 l-75">
+          <div class="relative">
+            <mat-form-field appearance="outline" class="example-full-width inputheight">
+              <mat-label>Mamá</mat-label>
+              <mat-select formControlName="mother">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let option of motherList" [value]="option.id">
+                  {{option.firstname}} {{option.secondname}} {{option.lastname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="ed-item s-50 l-25">
+          <!-- <a class="btn btn-blue h-12">Agregar Padre</a> -->
+          <div class=" mt-1 mb-4 py-3 mycustom-button  hover:bg-blue-700 rounded-lg tamano  text-center">
+            <a class="justi-center cursor-pointer no-underline" (click)="openDialog('de la mamá', 'F', 'MO')">AGREGAR</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-item ed-container">
+        <div class="ed-item s-50 l-75">
+          <div class="relative">
+            <mat-form-field appearance="outline" class="example-full-width inputheight">
+              <mat-label>Padrino</mat-label>
+              <mat-select formControlName="gfather">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let option of gfatherList" [value]="option.id">
+                  {{option.firstname}} {{option.secondname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="ed-item s-50 l-25">
+          <!-- <a class="btn btn-blue h-12">Agregar Padre</a> -->
+          <div class=" mt-1 mb-4 py-3 mycustom-button  hover:bg-blue-700 rounded-lg tamano  text-center">
+            <a class="justi-center cursor-pointer no-underline" (click)="openDialog('del padrino', 'M', 'GF')">AGREGAR</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ed-item ed-container">
+
+        <div class="ed-item s-50 l-75">
+          <div class="relative">
+            <mat-form-field appearance="outline" class="example-full-width inputheight">
+              <mat-label>Madrina</mat-label>
+              <mat-select formControlName="gmother">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let option of gmotherList" [value]="option.id">
+                  {{option.firstname}} {{option.secondname}} {{option.lastname}} {{option.secondlastname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+
+        <div class="ed-item s-50 l-25">
+          <!-- <a class="btn btn-blue h-12">Agregar Padre</a> -->
+          <div class=" mt-1 mb-4 py-3 mycustom-button  hover:bg-blue-700 rounded-lg tamano  text-center">
+            <a class="justi-center cursor-pointer no-underline" (click)="openDialog('de la madrina', 'F', 'GM')">AGREGAR</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ed-item ed-container">
+        <div class="ed-item s-50 l-75">
+          <div class="relative">
+            <mat-form-field appearance="outline" class="example-full-width inputheight">
+              <mat-label>Tutor</mat-label>
+              <mat-select formControlName="manager">
+                <mat-option>Ninguno</mat-option>
+                <mat-option *ngFor="let option of unisexList" [value]="option.id">
+                  {{option.firstname}} {{option.secondname}} {{option.lastname}} {{option.secondlastname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="ed-item s-50 l-25">
+          <!-- <a class="btn btn-blue h-12">Agregar Padre</a> -->
+          <div class=" mt-1 mb-4 py-3 mycustom-button hover:bg-blue-700 rounded-lg tamano  text-center">
+            <a class="justi-center cursor-pointer no-underline" (click)="openDialog('del encargado', null, 'MNG')">AGREGAR</a>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <div class="ed-item ed-container l-50">
+      <div class="ed-item s-50">
+        <div class="mb-4 py-1 ">
+          <button class="mycustom-buttom-primary hover:bg-green-700 rounded-lg tamano" type="submit">GUARDAR
+            REGISTRO</button>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+</div>

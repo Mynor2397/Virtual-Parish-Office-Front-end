@@ -1,0 +1,19 @@
+@host = http://localhost:5000/vpo/v1
+
+###
+GET {{host}}/place/many
+Content-Type: application/json
+
+###
+POST {{host}}/place/create
+Content-Type: application/json
+
+{
+    "name":"Los amates",
+    "description":"Area oeste de la parroquia"
+}
+
+###
+GET {{host}}/place/all
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiMTU0ZDY1MGEtZWY4YS00YjExLTkwYTEtY2MxNGI5MzBkYTJmIiwidXNlcm5hbWUiOiJtaWtlIiwicm9sIjoiYWRtaW4ifSwiZXhwIjoxNjAyODM4Nzk4LCJpc3MiOiJtYXJvbGQ5N0BvdXRsb29rLmNvbSJ9.KwVKbhYYO5CwgHisdXGoaZkajOtJowDlt4HMBZ9WaCt74xFCOZkWAptvkxRyzQcpbAuiGYvqS9YiAnHcpPrrdELmYDPkpmfc6RuqWFbB46zuKE89XHFgLiIjhCSGCMsrNej1mXskIKEnAxNwD1fEydN_fy6Tgmds63bWZYEg9MY
